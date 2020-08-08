@@ -1,31 +1,31 @@
 * {
     border: none;
-    border-radius: 0px;
     font-family: "FantasqueSansMono Nerd Font";
-    font-size: 13px;
+    font-size: 15px;
     min-height: 0;
-    color: #ebdbb2;
+    color: #e5e9f0;
+    background-color: #434c5e;
 }
 
 window#waybar {
     border-bottom-style: inset;
-    border-bottom: 4px solid #689d6a;
-    background: #1d2021;
+    border-bottom: 0px solid #a3be8c;
+    background: #a3be8c;
 }
 
 #workspaces, #clock, #custom-music, #window { 
-    font-weight: 800;
+    font-weight: 900;
 }
 
 /* Workspace Buttons */
+#workspaces button{
+    padding: 5px;
+}
 #workspaces button label{
-    color: #689d6a;
+    color: #e5e9f0;
 }
 #workspaces button.focused label {
-    color: #1d2021;
-}
-#workspaces button.focused {
-    background: #689d6a; 
+    color: #e5e9f0;
 }
 
 #mode {
@@ -33,39 +33,50 @@ window#waybar {
     color: white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode, #idle_inhibitor {
+#clock, #battery, #temperature, #cpu, #memory, #network, #pulseaudio, #tray, #mode, #clock {
     padding: 0 5px;
     margin: 0 10px;
 }
 
 
-#idle_inhibitor {
-    padding: 0 10px;
-}
-
-#idle_inhibitor.activated {
-    background-color: #689d6a;
-    color: #1d2021;
-}
-
-
-#custom-music {
-    color: #b8bb26;
-    margin: 0 15px;
-    padding: 0 20px;
-    border-bottom: 4px solid #b8bb26;
-}
-
-#custom-worktime {
-    padding: 0 5px;
-    border-bottom: 4px solid #ebdbb2
-
+#pulseaudio {
+    color: #b48ead;
+    border-bottom: 4px solid #b48ead;
 }
 
 #clock {
-    margin: 0;
-    color: #fabd2f;
-    border-bottom: 4px solid #fabd2f;
+    color: #ebcb8b;
+    border-bottom: 4px solid #ebcb8b;
+}
+
+#battery {
+    padding: 0 10px;
+}
+
+#temperature {
+    color: #5e81ac;
+    border-bottom: 4px solid #5e81ac;
+}
+
+#backlight {
+    color: #88c0d0;
+    border-bottom: 4px solid #88c0d0;
+}
+
+.ok {
+    color: #5e81ac;
+    border-bottom: 4px solid #5e81ac;
+}
+
+.warning {
+    color: #d08770;
+    border-bottom: 4px solid #d08770;
+}
+
+
+.critical {
+    color: #bf616a;
+    border-bottom: 4px solid #bf616a;
 }
 
 
@@ -74,6 +85,16 @@ window#waybar {
     border-bottom: 4px solid #cc241d;
 }
 
+
+#network.wifi {
+    color: #a3be8c;
+    border-bottom: 4px solid #a3be8c;
+}
+
+#network.ethernet {
+    color: #a3be8c;
+    border-bottom: 4px solid #a3be8c;
+}
 
 #pulseaudio.muted {
     padding: 0 20px;

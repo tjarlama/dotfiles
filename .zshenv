@@ -1,7 +1,13 @@
 export EDITOR=/usr/bin/vim
 export BROWSER=/usr/bin/firefox
 export PATH=$HOME/bin:$PATH:~/.local/bin:$HOME/.node/bin
-export TERMINAL=/usr/bin/termite
+
+if test -f /usr/bin/termite; then
+    export TERMINAL=/usr/bin/termite
+else
+    export TERMINAL=/usr/bin/xfce4-terminal
+fi
+
 export TERM=xterm-256color
 export MANPAGER="/usr/bin/less"
 export PAGER="/usr/bin/less"

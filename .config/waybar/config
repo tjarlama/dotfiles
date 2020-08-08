@@ -2,65 +2,74 @@
     "layer": "top",
     "position": "top",
     "height": 30,
-    "modules-left": ["sway/workspaces", "custom/music"],
-    "modules-center": ["sway/window", "sway/mode"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "battery", "tray", "custom/worktime", "clock"],
+    "modules-left": ["custom/rofi", "sway/workspaces"],
+    "modules-center": ["cpu", "memory", "battery", "temperature"],
+    "modules-right": ["network", "backlight", "pulseaudio", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "❰<span color=\"#ebdbb2\"> {name} </span>❱", 
+        "format": "{icon}", 
         "format-icons": {
-            "1:web": "www",
-            "2:code": "",
-            "3:term": "",
-            "4:work": "",
-            "5:music": "",
-            "6:docs": "",
-            "urgent": "",
-            "focused": "",
-            "default": ""
+            "urgent": " ",
+            "default": " ",
+            "focused": " "
         }
     },
 
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "tray": {
-        "icon-size": 16,
-        "spacing": 10
-    },
     "clock": {
-        // Human Friendly
         "format-alt": "{:%A, %B %d at %I:%M %p}",
-        // 24hr Robot Friendly
-        "format": "{:%Y-%m-%d - %H:%M}"
+        "format": "{:%H:%M %p}"
     },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": [" ", " "]
+    },
+
     "cpu": {
         "format": "{usage}% ",
-        "on-click": "alacritty -t 'Floating Terminal' -e htop"
+        "states": {
+            "ok": 0,
+            "warning": 50,
+            "critical": 80
+        }
     },
 
     "memory": {
         "interval": 30,
-        "format": "{used:0.1f}/{total:0.1f}G "
+        "states": {
+            "ok": 0,
+            "warning": 50,
+            "critical": 80
+        },
+        "format": "{used:0.1f}/{total:0.1f}G  "
+    },
+
+
+    "battery": {
+        "interval": 30,
+        "format": "{icon} {capacity}%",
+        "states": {
+            "ok": 100,
+            "warning": 30,
+            "critical": 20
+        },
+        "format-icons": [" ", " ", " ", " ", " "]
     },
 
     "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr} ",
         "format-disconnected": "Disconnected ⚠"
     },
+
+    "temperature": {
+	"format": "{temperatureC}°C ",
+        "critical-threshold": 50
+    },
+
     "pulseaudio": {
-        //"scroll-step": 1,
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
@@ -74,21 +83,5 @@
             "default": ["", ""]
         },
         "on-click": "pavucontrol"
-    },
-    "custom/music": {
-    "format": "  {}",
-    "max-length": 60,
-    "interval": 5, // Remove this if your script is endless and write in loop
-    "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
-	"tooltip": false,
-	"on-click": "playerctl play-pause",
-	"on-scroll-up": "playerctl previous",
-	"on-scroll-down": "playerctl next"
-    },
-    "custom/worktime": {
-        "format": "{} ⏲",
-        "interval": 60,
-        "exec": "$HOME/.config/waybar/worktime.sh 2> /dev/null",
-        "on-click": "alacritty --dimensions 60 15 --hold -t 'Floating Terminal' -e timew summary :week"
     }
 }
