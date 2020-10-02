@@ -2,17 +2,17 @@
     "layer": "top",
     "position": "top",
     "height": 30,
-    "modules-left": ["custom/rofi", "sway/workspaces"],
+    "modules-left": ["sway/workspaces"],
     "modules-center": ["cpu", "memory", "battery", "temperature"],
-    "modules-right": ["network", "backlight", "pulseaudio", "clock"],
+    "modules-right": ["network", "backlight", "pulseaudio", "clock", "custom/power"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{icon}", 
         "format-icons": {
-            "urgent": " ",
-            "default": " ",
-            "focused": " "
+            "urgent": " ",
+            "default": " ",
+            "focused": " "
         }
     },
 
@@ -83,5 +83,11 @@
             "default": ["", ""]
         },
         "on-click": "pavucontrol"
+    },
+
+    "custom/power": {
+        "format": " ",
+        "on-click": "$HOME/bin/pmenu.sh"
     }
+
 }

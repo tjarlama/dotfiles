@@ -1,4 +1,8 @@
-export EDITOR=/usr/bin/vim
+if test -f /usr/bin/nvim; then
+    export EDITOR=/usr/bin/nvim
+else
+    export EDITOR=/usr/bin/vim
+fi
 export BROWSER=/usr/bin/firefox
 export PATH=$HOME/bin:$PATH:~/.local/bin:$HOME/.node/bin
 
@@ -18,3 +22,11 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+export OS=$(uname -o)
+
+if [ "$OS" = "Android" ]; then
+    export CLOUD_HOME="/storage/emulated/0/wakanda"
+else
+    export CLOUD_HOME="$HOME/wakanda"
+fi

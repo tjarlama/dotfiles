@@ -1,54 +1,60 @@
 # Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
 
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term x-terminal-emulator
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
+# Set terminal
+set $term termite || xfce4-terminal
+# Set menu
+set $menu rofi -show drun -show-icons
+# Set wallpaper
+output * bg ~/Pictures/wallpaper.png fill
+output * resolution 1920x1080
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/wallpaper.jpg fill
+#output eDP-1 pos 0,0
+#output HDMI-1 pos 0,0
 
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+# natural_scroll enabled
+# middle_emulation enabled
 
-
-#       natural_scroll enabled
-#       middle_emulation enabled
-	input "2:8:AlpsPS/2_ALPS_GlidePoint" {  
+input "2:8:AlpsPS/2_ALPS_GlidePoint" {  
 		   accel_profile adaptive
 		   dwt enabled
 		   tap enabled
 		   scroll_method  edge
-	   }
-#
+}
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
  #:::::::::disable_window_borders::::::::                                                                  
-	 for_window [class="^.*"] border pixel 0                                                                   
-	 default_border pixel 1                                                                                        
-	 default_floating_border  normal   
+	 for_window [class="^.*"] border pixel 0
+	 default_border pixel 2
 
+	 for_window [floating] title_format "(%app_id)"
+	 default_floating_border normal 
+
+	 set $opacity 0.9
+	 for_window [class="XTerm"] opacity $opacity
+	 for_window [class="XTerm"] border pixel 3
+	 for_window [class="XTerm"] floating enable
+
+	 client.focused #ebcb8b #ebcb8b #eceff4 
+	 client.focused_inactive #8fbcbb #8fbcbb #eceff4 
+	 client.unfocused #8fbcbb #8fbcbb #eceff4 
+	 client.urgent #bf616a #bf616a #eceff4
 
 #:::::i3_ gaps::::::::::::::                                                                              
-	set $default_gaps_inner 5                                                                                
-	set $default_gaps_outer 3                                                                                 
+	set $default_gaps_inner 7
+	set $default_gaps_outer 0
 	gaps inner $default_gaps_inner                                                                            
 	gaps outer $default_gaps_outer                                                                            
 	smart_gaps on                                                                                             
@@ -62,8 +68,11 @@ output * bg ~/Pictures/wallpaper.jpg fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-exec --no-startup-id waybar
+#exec --no-startup-id waybar
 
+bar {
+     swaybar_command waybar
+}
 ### Idle configuration
 #
 # Example configuration:
@@ -105,14 +114,16 @@ input "1267:47:Elan_Touchpad" {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec xterm;
+    bindsym $mod+Shift+o exec /home/daybreak/bin/pmenu.sh;
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
     # Start your launcher
     
-bindsym $mod+d exec rofi -show drun -show-icons
-#bindsym $mod+d exec $menu
+#bindsym $mod+d exec rofi -show drun -show-icons
+bindsym $mod+d exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

@@ -9,17 +9,17 @@
 configuration {
         show-icons:   true;
         sidebar-mode: true;
-	    font: "Iosevka Term Medium 12";
+	font: "Iosevka Nerd Font 12";
 }
 
 * {
-        background-color:           #2e3440;
+        background-color:           #2e344077;
         text-color:                 #e5e9f0;
 
-        accent-color:               #3b4252;
-        border-color:               #4c566a;
-        hover-color:                #434c5e;
-        urgent-color:               #eceff4;
+        accent-color:               #3b425277;
+        border-color:               #4c566a77;
+        hover-color:                #434c5e77;
+        urgent-color:               #eceff477;
         window-color:               #eceff4;
 
         selected-normal-foreground: @window-color;
@@ -53,7 +53,7 @@ configuration {
 
 entry {
         expand: false;
-        margin:10px;
+        margin:5px;
 }
 
 element {
