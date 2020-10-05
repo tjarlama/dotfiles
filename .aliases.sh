@@ -15,11 +15,11 @@ function rclone_push_dry () {
 }
 
 function rclone_pull () {
-	rclone sync $CLOUD_HOME/${1}/ crypt-${1}:
+	rclone sync crypt-${1}: $CLOUD_HOME/${1}/
 }
 
 function rclone_pull_dry () {
-	rclone sync --dry-run $CLOUD_HOME/${1}/ crypt-${1}:
+	rclone sync --dry-run crypt-${1}: $CLOUD_HOME/${1}/
 }
 
 # Aliased for dotfile management
