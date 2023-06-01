@@ -9,11 +9,11 @@ set $up k
 set $right l
 
 # Set terminal
-set $term termite || xfce4-terminal
+set $term termite || kitty
 # Set menu
-set $menu rofi -show drun -show-icons
+set $menu wofi
 # Set wallpaper
-output * bg ~/Pictures/wallpaper.png fill
+output * bg ~/Pictures/Wallpapers/nord_buildings.png fill
 output * resolution 1920x1080
 
 #output eDP-1 pos 0,0
@@ -22,22 +22,16 @@ output * resolution 1920x1080
 set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
-# natural_scroll enabled
 # middle_emulation enabled
 
-input "2:8:AlpsPS/2_ALPS_GlidePoint" {  
-		   accel_profile adaptive
-		   dwt enabled
-		   tap enabled
-		   scroll_method  edge
-}
+
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
  #:::::::::disable_window_borders::::::::                                                                  
-	 for_window [class="^.*"] border pixel 0
-	 default_border pixel 2
+	 for_window [class="^.*"] border none
+	 default_border none
 
 	 for_window [floating] title_format "(%app_id)"
 	 default_floating_border normal 
@@ -53,8 +47,8 @@ input "2:8:AlpsPS/2_ALPS_GlidePoint" {
 	 client.urgent #bf616a #bf616a #eceff4
 
 #:::::i3_ gaps::::::::::::::                                                                              
-	set $default_gaps_inner 7
-	set $default_gaps_outer 0
+	set $default_gaps_inner 5
+	set $default_gaps_outer 5
 	gaps inner $default_gaps_inner                                                                            
 	gaps outer $default_gaps_outer                                                                            
 	smart_gaps on                                                                                             
@@ -71,7 +65,8 @@ input "2:8:AlpsPS/2_ALPS_GlidePoint" {
 #exec --no-startup-id waybar
 
 bar {
-     swaybar_command waybar
+    swaybar_command waybar
+    mode hide
 }
 ### Idle configuration
 #
@@ -104,6 +99,7 @@ bar {
 input "1267:47:Elan_Touchpad" {
    dwt enabled
    tap enabled
+   natural_scroll enabled
 }
 
 ### Key bindings
@@ -119,6 +115,7 @@ input "1267:47:Elan_Touchpad" {
 
     # Kill focused window
     bindsym $mod+Shift+q kill
+    bindsym $mod+Shift+w exec grim
 
     # Start your launcher
     
@@ -254,4 +251,29 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
+set $opacity 0.97
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
+
+#for_window [class="conky"] floating enable, opacity 0.7, resize set width 500 px height 800 px, move up 0, move down 518
+for_window [class="^(c|C)onky.*"] {
+floating enable
+opacity 0.97
+  resize set width 100ppt
+  move position 0 0
+  resize set width 340px
+}
+
+assign [class="^(c|C)onky.*"] workspace number 5
+
+for_window [class="^youtube-music-desktop-app$"] {
+  floating enable
+  resize set width 50ppt height 50ppt
+  move position 50ppt 0
+  exec swaymsg "[class=conky] floating enable, move absolute position 100 20"
+}
+
+
 include /etc/sway/config.d/*
+
+

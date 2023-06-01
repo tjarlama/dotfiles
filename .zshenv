@@ -9,7 +9,7 @@ export PATH=$HOME/bin:$PATH:~/.local/bin:$HOME/.node/bin
 if test -f /usr/bin/termite; then
     export TERMINAL=/usr/bin/termite
 else
-    export TERMINAL=/usr/bin/xfce4-terminal
+    export TERMINAL=/usr/bin/kitty
 fi
 
 export TERM=xterm-256color
@@ -30,3 +30,7 @@ if [ "$OS" = "Android" ]; then
 else
     export CLOUD_HOME="$HOME/wakanda"
 fi
+
+export LC_CTYPE=en_US.utf8
+export LANG=en_US.utf8
+

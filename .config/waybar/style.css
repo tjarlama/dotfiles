@@ -1,22 +1,24 @@
 * {
     border: none;
-    font-family: "FantasqueSansMono Nerd Font";
+    font-family: "Iosevka Nerd Font";
     font-size: 15px;
     min-height: 0;
     color: #e5e9f0;
-    background-color: #2e3440;
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
 window#waybar {
     border-bottom-style: inset;
-    border-bottom: 0px solid #a3be8c;
-    background: #a3be8c;
 }
 
 #workspaces, #clock, #custom-music, #window { 
     font-weight: 900;
 }
 
+button {
+    background-color: rgba(46, 52, 64, 0.5);
+    border-radius: 5px;
+}
 /* Workspace Buttons */
 #workspaces button{
     padding: 5px;
@@ -24,82 +26,49 @@ window#waybar {
 #workspaces button label{
     color: #5e81ac;
 }
-#workspaces button.focused label {
-    color: #8fbcbb;
-}
 
 #mode {
     background-color: #cc241d;
     color: white;
 }
 
-#clock, #battery, #temperature, #cpu, #memory, #network, #pulseaudio, #tray, #mode, #clock, #custom-power {
-    padding: 0 5px;
-    margin: 0 10px;
+#clock, #battery, #temperature, #cpu, #memory, #network, #pulseaudio, #tray, #mode, #clock, #custom-power, #backlight{
+    padding: 5px 20px 5px 20px;
+    margin: 2px 5px;
+    background-color: rgba(46, 52, 64, 1);
+    border-radius: 5px;
+    border-bottom: 3px solid #5e81ac;
+	color: #5e81ac;
 }
 
 
-#custom-power {
+#battery.Discharging {
     color: #a3be8c;
-    border-bottom: 4px solid #a3be8c;
 }
 
-
-#battery {
-    padding: 0 10px;
+#battery.Unknown {
+    color: #a3be8c;
 }
-
-#temperature {
-    color: #5e81ac;
-    border-bottom: 4px solid #5e81ac;
-}
-
 
 #network.disconnected {
     color: #cc241d;
-    border-bottom: 4px solid #cc241d;
+    border-bottom: 3px solid #cc241d;
 }
 
-
-#clock {
-    color: #a3be8c;
-    border-bottom: 4px solid #a3be8c;
-}
-
-#network.ethernet {
-    color: #8fbcbb;
-    border-bottom: 4px solid #a3be8c;
-}
-
-#backlight {
-    color: #81a1c1;
-    border-bottom: 4px solid #81a1c1;
-}
-
-#pulseaudio {
-    color: #88c0d0;
-    border-bottom: 4px solid #88c0d0;
-}
-
-#network.wifi {
-    color: #5e81ac;
-    border-bottom: 4px solid #5e81ac;
-}
 
 .ok {
     color: #5e81ac;
-    border-bottom: 4px solid #5e81ac;
+    border-bottom: 3px solid #5e81ac;
 }
 
 .warning {
     color: #d08770;
-    border-bottom: 4px solid #d08770;
+    border-bottom: 3px solid #d08770;
 }
-
 
 .critical {
     color: #bf616a;
-    border-bottom: 4px solid #bf616a;
+    border-bottom: 3px solid #bf616a;
 }
 
 
@@ -107,5 +76,5 @@ window#waybar {
 #pulseaudio.muted {
     padding: 0 20px;
     color: #8fbcbb;
-    border-bottom: 4px solid #8fbcbb;
+    border-bottom: 3px solid #8fbcbb;
 }

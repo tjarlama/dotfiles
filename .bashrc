@@ -139,3 +139,11 @@ ex ()
 }
 alias config='/usr/bin/git --git-dir=/home/daybreak/.cfg/ --work-tree=/home/daybreak'
 alias config='/usr/bin/git --git-dir=/home/daybreak/.cfg/ --work-tree=/home/daybreak'
+
+export PATH=/home/daybreak/bin:$PATH
+
+[[ -e "/home/daybreak/lib/oracle-cli/lib/python3.8/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "/home/daybreak/lib/oracle-cli/lib/python3.8/site-packages/oci_cli/bin/oci_autocomplete.sh"
+
+chmod +x ~/.vocab
+~/.vocab
+alias clear="clear;~/.vocab"

@@ -38,6 +38,5 @@ TitleMode=TERMINAL_TITLE_HIDE
 ScrollingUnlimited=TRUE
 BackgroundDarkness=0.900000
 ScrollingOnOutput=FALSE
-ScrollingBar=TERMINAL_SCROLLBAR_NONE
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 
