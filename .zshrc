@@ -8,6 +8,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="hoppy"
+ZSH_CUSTOM="$HOME/.config/.oh-my-zsh"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
@@ -39,6 +40,8 @@ fpath+=~/.zfunc
 
 export LC_CTYPE=en_US.utf8
 export LANG=en_US.utf8
+
+alias config='/usr/bin/git --git-dir=/home/daybreak/.cfg/ --work-tree=/home/daybreak'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
