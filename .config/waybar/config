@@ -10,9 +10,9 @@
         "all-outputs": true,
         "format": "<span font='14'>{icon}</span>", 
         "format-icons": {
-            "urgent": "",
-            "default": "",
-            "focused": ""
+            "urgent": " ",
+            "default": " ",
+            "focused": " "
         }
     },
 
