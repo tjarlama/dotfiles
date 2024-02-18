@@ -282,6 +282,12 @@ for_window [class="^youtube-music-desktop-app$"] {
   exec swaymsg "[class=conky] floating enable, move absolute position 100 20"
 }
 
+exec "dbus-update-activation-environment --systemd --all "
+exec "dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP=sway "
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 
 include /etc/sway/config.d/*
 
