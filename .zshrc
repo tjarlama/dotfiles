@@ -43,6 +43,8 @@ export LANG=en_US.utf8
 
 alias config='/usr/bin/git --git-dir=/home/daybreak/.cfg/ --work-tree=/home/daybreak'
 
+alias ranger='TERM=kitty ranger'
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/daybreak/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

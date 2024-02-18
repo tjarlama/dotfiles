@@ -12,7 +12,6 @@ else
     export TERMINAL=/usr/bin/kitty
 fi
 
-export TERM=xterm-256color
 export MANPAGER="/usr/bin/less"
 export PAGER="/usr/bin/less"
 export LESS_TERMCAP_mb=$'\e[1;32m'
