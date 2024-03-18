@@ -41,15 +41,6 @@ button {
 	color: #5e81ac;
 }
 
-
-#battery.Discharging {
-    color: #a3be8c;
-}
-
-#battery.Unknown {
-    color: #a3be8c;
-}
-
 #network.disconnected {
     color: #cc241d;
     border-bottom: 3px solid #cc241d;
