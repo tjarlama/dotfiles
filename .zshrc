@@ -41,9 +41,12 @@ fpath+=~/.zfunc
 export LC_CTYPE=en_US.utf8
 export LANG=en_US.utf8
 
-alias config='/usr/bin/git --git-dir=/home/daybreak/.cfg/ --work-tree=/home/daybreak'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Adjust PATH to include Homebrew's binary directory
+	export PATH="/opt/homebrew/bin:$PATH"
+fi
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 #__conda_setup="$('/home/daybreak/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

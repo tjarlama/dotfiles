@@ -1,11 +1,19 @@
-call plug#begin()
+call plug#begin('~/.vim/plugged')
+
+  " Filesystem explorer utility
   Plug 'preservim/nerdtree'
-  Plug 'nordtheme/vim'
+  " Nord color scheme for Vim
+  Plug 'arcticicestudio/nord-vim'
+  " Lean & mean status/tabline for vim that's light as air
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  " Adds file type icons to Vim plugins such as NERDTree
   Plug 'ryanoasis/vim-devicons'
-  Plug 'Valloric/YouCompleteMe'
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+  " Conditionally load YouCompleteMe if Python 3 support is available
+  if has('python3')
+    Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
+  endif
+
 call plug#end()
 
 
@@ -25,10 +33,12 @@ set background=dark
 set t_Co=256
 colorscheme nord
 
-autocmd TermOpen * startinsert
-autocmd TermOpen * setlocal nonumber norelativenumber
 tnoremap <C-W>n <C-\><C-n>
 if has('nvim')
+  if has("terminal")
+    autocmd TermOpen * startinsert
+    autocmd TermOpen * setlocal nonumber norelativenumber
+  endif
     "autocmd TermOpen term://* startinsert
     "autocmd BufEnter,BufNew term://* startinsert
 	autocmd BufWinEnter,WinEnter term://* startinsert

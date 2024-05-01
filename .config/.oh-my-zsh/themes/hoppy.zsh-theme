@@ -79,7 +79,7 @@ prompt_time() {
 }
 prompt_timer() {
 	if [[ -v timer ]]; then
-		now=$(($(date +%s%0N)/1000000))
+		now=$(date +%s)
 		ELAPSED_TIME=$(($now-$timer))
 		prompt_segment cyan $CURRENT_FG "󰄉 $ELAPSED_TIME ms";
  fi
@@ -271,15 +271,25 @@ prompt_aws() {
 }
 
 function preexec() {
-	timer=$(($(date +%s%0N)/1000000))
+	if [[ "$OSTYPE" == "darwin"* ]]; then
+		timer=$(date +%s)
+	else
+		timer=$(($(date +%s%0N)/1000000))
+	fi
 }
 
 function precmd() {
   if [ $timer ]; then
-    now=$(($(date +%s%0N)/1000000))
-    elapsed=$(($now-$timer))
+		if [[ "$OSTYPE" == "darwin"* ]]; then
+			now=$(date +%s)
+			elapsed=$(($now-$timer))
+			export RPROMPT="%F{blue}${elapsed}s %{$reset_color%}"
+		else
+			now=$(($(date +%s%0N)/1000000))
+			elapsed=$(($now-$timer))
+			export RPROMPT="%F{blue}${elapsed}ms %{$reset_color%}"
+		fi
 
-    export RPROMPT="%F{blue}${elapsed}ms %{$reset_color%}"
     unset timer
   fi
 }
