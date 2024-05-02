@@ -15,10 +15,14 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zprofile
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/daybreak/google-cloud-sdk/path.zsh.inc' ]; then . '/home/daybreak/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
+	. "$HOME/google-cloud-sdk/path.zsh.inc";
+fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/daybreak/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/daybreak/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
+	. "$HOME/google-cloud-sdk/completion.zsh.inc";
+fi
 
 
 setopt EXTENDED_HISTORY
@@ -47,6 +51,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Adjust PATH to include Homebrew's binary directory
 	export PATH="/opt/homebrew/bin:$PATH"
 fi
+source <(kubectl completion zsh)
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 #__conda_setup="$('/home/daybreak/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

@@ -1,7 +1,6 @@
-if test -f /usr/bin/nvim; then
-    export EDITOR=/usr/bin/nvim
-else
-    export EDITOR=/usr/bin/vim
+if command -v nvim >/dev/null 2>&1; then
+    export EDITOR=nvim
+    alias vim=nvim
 fi
 export BROWSER=/usr/bin/firefox
 export PATH=$HOME/bin:$PATH:~/.local/bin:$HOME/.node/bin
